@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<!--libraries for bootstrap-->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<head><title>Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Dashboard</title>
+  <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" data-auto-replace-svg="nest"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+  <!-- MDB -->
+  <link rel="stylesheet" href="css/mdb.min.css" />
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="css/admin.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+    crossorigin="anonymous"></script>
+
+
+<style>
+
+.bar.total rect {
+  fill: steelblue;
+}
+
+.bar.positive rect {
+  fill: darkolivegreen;
+}
+.bar.negative rect {
+  fill: crimson;
+}
+
+.bar line.connector {
+  stroke: grey;
+  stroke-dasharray: 3;
+}
+
+.bar text {
+  fill: white;
+  font: 12px sans-serif;
+  text-anchor: middle;
+  color:black;
+}
+
+.axis text {
+  font: 10px sans-serif;
+  
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+</style>
+</head>
+
+
+
+
+
+
+<body>
+  <!--Main Navigation-->
+<header>
+  <!-- Sidebar -->
+  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+    <div class="position-sticky">
+      <div class="list-group list-group-flush mx-3 mt-4">
+        <a href="admin.html#title" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+          <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Main dashboard</span>
+        </a>
+
+        <a href="admin.html#barAnimated" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+          <i class="far fa-chart-bar fa-fw me-3"></i><span>Column Chart</span>
+        </a>
+        
+        <a href="admin.html#donut" class="list-group-item list-group-item-action py-2 ripple"><i class="fas fa-dot-circle fa-fw me-3"></i>
+          <span> DonutChart</span></a>
+        <a href="admin.html#stackArea" class="list-group-item list-group-item-action py-2 ripple"><i class="fas fa-chart-area fa-fw me-3"></i><span>StackAreaChart</span></a>
+        <a href="admin.html#horizontalBar" class="list-group-item list-group-item-action py-2 ripple">
+          <i class="fa fa-bars fa-fw me-3" aria-hidden="true"></i>
+<span>BarChart</span>
+        </a>
+        <a href="admin.html#bubble" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-chart-bar fa-fw me-3"></i><span>BubbleChart</span></a>
+        <a href="admin.html#multiLine" class="list-group-item list-group-item-action py-2 ripple">
+          <i class="fas fa-chart-line fa-fw me-3"></i><span>MultiLineChart</span></a>
+        <a href="admin.html#Histogram" class="list-group-item list-group-item-action py-2 ripple"><i class="far fa-chart-bar fa-fw me-3"></i>
+          <span>Histogram</span></a>
+          
+        <a href="./heatmap.html" class="list-group-item list-group-item-action py-2 ripple" role="button"><i class="fas fa-th fa-fw me-3"></i>Heatmap</a>
+
+        <a href="./pie.html" class="list-group-item list-group-item-action py-2 ripple" role="button"><i class="fa fa-chart-pie fa-fw me-3"></i>Pie Chart</a>
+        
+        <a href="./waterfall.html" class="list-group-item list-group-item-action py-2 ripple" role="button"><i class="fas fa-water fa-fw me-3"></i>Waterfall Chart</a>
+
+        <!--<a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+            class="fas fa-money-bill fa-fw me-3"></i><span>Sales</span></a>-->
+      </div>
+    </div>
+  </nav>
+  <!-- Sidebar -->
+
+  <!-- Navbar -->
+  <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+      <!-- Toggle button -->
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
+        aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Brand -->
+      <a class="navbar-brand" href="#">
+      <i class="fas fa-tachometer-alt"></i>
+      </a>
+      <!-- Search form -->
+      <form class="d-none d-md-flex input-group w-auto my-auto">
+        <input autocomplete="off" type="search" class="form-control rounded"
+          placeholder='Search (ctrl + "/" to focus)' style="min-width: 225px" />
+        <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
+      </form>
+
+      <!-- Right links -->
+      <ul class="navbar-nav ms-auto d-flex flex-row">
+        <!-- Notification dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
+            role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-bell"></i>
+            <span class="badge rounded-pill badge-notification bg-danger">1</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="#">Some news</a></li>
+            <li><a class="dropdown-item" href="#">Another news</a></li>
+            <li>
+              <a class="dropdown-item" href="#">Something else</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Icon -->
+        <li class="nav-item">
+          <a class="nav-link me-3 me-lg-0" href="#">
+            <i class="fas fa-fill-drip"></i>
+          </a>
+        </li>
+        <!-- Icon -->
+        <li class="nav-item me-3 me-lg-0">
+          <a class="nav-link" href="#">
+            <i class="fab fa-github"></i>
+          </a>
+        </li>
+
+        <!-- Icon dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdown" role="button"
+            data-mdb-toggle="dropdown" aria-expanded="false">
+            <i class="united kingdom flag m-0"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item" href="#"><i class="united kingdom flag"></i>English
+                <i class="fa fa-check text-success ms-2"></i></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="poland flag"></i>Polski</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="china flag"></i>中文</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="japan flag"></i>日本語</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="germany flag"></i>Deutsch</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="france flag"></i>Français</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="spain flag"></i>Español</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="russia flag"></i>Русский</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="portugal flag"></i>Português</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Avatar -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
+            id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+<i class="fas fa-user-circle"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="#">My profile</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->
+</header>
+
+
+
+
+
+
+<main style="margin-top: 58px">
+  <div class="container pt-4">
+    <!-- Section: Main chart -->
+    
+<section class="mb-4">
+
+
+
+<br>
+<h2>Waterfall Chart showing increase or decrease of Trade in respective Years</h2><br>
+<svg class="chart"></svg>
+<br>
+<!--<a href="./admin.html" class="btn btn-primary" style="margin-left: 120px; margin.top:350px;" role="button">Home</a>
+-->
+</section>
+
+<br>
+      <br>
+      <h2>Technologies and References Used</h2>
+    <section>
+        <div class="row">
+          <div class="col-xl-3 col-sm-6 col-12 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between px-md-1">
+                  <div class="align-self-center">
+                    <i class="fab fa-youtube text-danger fa-7x"></i>
+                    
+                  </div>
+                  <div class="text-end">
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 col-12 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between px-md-1">
+                  <div class="align-self-center">
+                    <img src="./img/d3.png"style="width:110px;height:110px;" />
+                  </div>
+                  <div class="text-end">
+                    
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 col-12 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between px-md-1">
+                  <div class="align-self-center">
+                    <i unicode="f13b" class="fab fa-html5 text-warning fa-7x"></i>
+                    
+                  </div>
+              
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 col-12 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between px-md-1">
+                  <div class="align-self-center">
+                    <i class="fab fa-css3-alt text-primary fa-7x"></i>
+                  </div>
+                  <div class="text-end">
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-3 col-sm-6 col-12 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between px-md-1">
+                  <div class="align-self-center">
+                  <i class="fab fa-google text-success fa-7x"></i>
+                    
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 col-12 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between px-md-1">
+                  <div>
+                  <i class="fab fa-bootstrap text-info fa-7x"></i>
+                                      </div>
+                  <div class="align-self-center">
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 col-12 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between px-md-1">
+                  <div>
+                    <i class="fas fa-code text-dark fa-7x"></i>
+                  </div>
+                  <div class="align-self-center">
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 col-12 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between px-md-1">
+                  <div>
+                    <i class="fab fa-js-square text-warning fa-7x"></i>
+                  </div>
+                  <div class="align-self-center">
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </section>
+</main>
+</body>
+
+
+
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script>
+var margin = {top: 20, right: 30, bottom: 50, left: 150},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom,
+    padding = 0.3;
+
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], padding);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+
+var chart = d3.select(".chart")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.csv("data.csv", type, function(error, data) {
+
+
+y.domain([0, d3.max(data, function(d) { return d.value_i; })]);
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .tickFormat(function(d) { return dollarFormatter(d); });
+
+
+  // Transform data (i.e., finding cumulative values and total) for easier charting
+  var cumulative = 0;
+  for (var i = 0; i < 9; i++) {
+    data[i].start = cumulative;
+    cumulative += data[i].value_i;
+    data[i].end = cumulative;
+
+    data[i].class = ( data[i].value_i >= 0 ) ? 'positive' : 'negative'
+  }
+  data.push({
+    year: 'Total',
+    end: cumulative,
+    start: 0,
+    class: 'total'
+  });
+
+  x.domain(data.map(function(d) { return d.year; }));
+  y.domain([0, d3.max(data, function(d) { return d.end; })]);
+
+  chart.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  chart.append("g")
+      .attr("class", "y axis")
+      .call(yAxis);
+
+  var bar = chart.selectAll(".bar")
+      .data(data)
+    .enter().append("g")
+      .attr("class", function(d) { return "bar " + d.class })
+      .attr("transform", function(d) { return "translate(" + x(d.year) + ",0)"; });
+
+  bar.append("rect")
+      .attr("y", function(d) { return y( Math.max(d.start, d.end) ); })
+      .attr("height", function(d) { return Math.abs( y(d.start) - y(d.end) ); })
+      .attr("width", x.rangeBand());
+
+  bar.append("text")
+      .attr("x", x.rangeBand() / 2)
+      .attr("y", function(d) { return y(d.end) + 5; })
+      .attr("dy", function(d) { return ((d.class=='negative') ? '-' : '') + ".75em" })
+      .text(function(d) { return dollarFormatter(d.end - d.start);});
+
+  bar.filter(function(d) { return d.class != "total" }).append("line")
+      .attr("class", "connector")
+      .attr("x1", x.rangeBand() + 5 )
+      .attr("y1", function(d) { return y(d.end) } )
+      .attr("x2", x.rangeBand() / ( 1 - padding) - 5 )
+      .attr("y2", function(d) { return y(d.end) } )
+
+      chart.append("text")
+    .attr("text-anchor", "end")
+    .attr("x", width)
+    .attr("y", height + margin.top + 10)
+    .text("Year")
+
+// Y axis label:
+chart.append("text")
+    .attr("text-anchor", "end")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -margin.left+25)
+    .attr("x", -margin.top)
+    .text("Value");
+
+  /*chart.append("text")
+            .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+            .attr("transform", "translate("+ (padding/2) +","+(height/2)+")rotate(-90)")  // text is drawn off the screen top left, move down and out and rotate
+            .text("Value");
+
+        vis.append("text")
+            .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+            .attr("transform", "translate("+ (width/2) +","+(height-(padding/3))+")")  // centre below axis
+            .text("Year");*/
+});
+
+function type(d) {
+  d.value_i = +d.value_i;
+  return d;
+}
+
+function dollarFormatter(n) {
+  n = Math.round(n);
+  var result = n;
+  if (Math.abs(n) > 1000) {
+    result = Math.round(n/1000) + 'K';
+  }
+  return '$' + result;
+}
+
+</script>
